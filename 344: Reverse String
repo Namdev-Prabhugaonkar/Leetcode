@@ -1,0 +1,13 @@
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int len=s.size();
+        int mid=len/2;
+        for (int i = 0, j=len-1; i < mid; i++, j--) 
+        {
+        char c = s[i];
+        s[i]   = s[j];
+        s[j]   = c;      
+          }
+    }
+};
