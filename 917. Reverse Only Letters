@@ -1,0 +1,31 @@
+class Solution {
+public:
+    string reverseOnlyLetters(string S) {
+        int len =S.length();
+        string A;
+        int i=0,j=len-1;
+        printf("%i",len);
+        while(i<j)
+        {
+            if(!isalpha(S[i]))
+            {
+                i++;
+                 
+            }
+            else if(!isalpha(S[j]))
+            {
+                j--;
+            }
+            else
+            {
+                char temp=S[i];
+                S[i]=S[j];
+                S[j]=temp;
+                i++;
+                j--;
+            }
+        }
+       
+        return S;
+    }
+};
