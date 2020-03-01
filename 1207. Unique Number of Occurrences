@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int> temp_map;
+        unordered_set<int> temp_set;
+        
+        for(auto i: arr)
+            temp_map[i]++;
+
+        
+         for(auto i: temp_map)
+            temp_set.insert(i.second);
+          
+        cout<<temp_set.size()<<" "<<temp_map.size()<<endl;
+        
+        return temp_map.size()==temp_set.size();
+    }
+};
