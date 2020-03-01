@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map <int,int> temp_map;
+        vector <int> ans;
+        for(auto i : nums1)
+        temp_map[i]++;    
+        
+        for(auto i : temp_map)
+        cout<<i.first<<" "<<i.second<<endl; 
+       
+         for(auto j:nums2)
+        {
+            if(temp_map[j]>0)
+            {
+                ans.push_back(j);
+                temp_map[j]=0;
+            }
+        }
+        
+        return ans;
+    }
+};
