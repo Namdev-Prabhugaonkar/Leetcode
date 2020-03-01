@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+    unordered_map <char,int> temp_map;
+ 
+    int ans = 0;
+    int flag = false;
+        
+    for(auto i: s)
+    temp_map[i]++;
+           
+    for(auto i: temp_map)
+      cout<<i.first<<" "<<i.second<<endl;
+        
+     for(auto it : temp_map)
+     {
+            if(it.second == 1)
+            {
+                if(flag) continue;
+                ans += 1;
+                flag = true;
+            }
+        else if(it.second % 2 == 1)
+        {
+                if(flag)
+                {
+                    ans += (it.second - 1);
+                }
+                else 
+                {
+                    ans += it.second;
+                    flag = true;
+                }
+        }
+        else if(it.second % 2 == 0)
+             {
+               ans += (it.second);
+             }
+     }
+        return ans;
+    }
+};
