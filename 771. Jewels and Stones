@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        int count=0;
+        unordered_map<char,int> temp_map;
+        
+        for(auto i: J)
+            temp_map[i]++;
+        
+        count=0;
+        int index=0;
+        while(index<S.length())
+        {
+            if(temp_map.count(S[index])>0)
+            {
+                count++;
+            }
+            index++;
+        }
+//alternate method      
+//         for(int i=0;i<J.length();i++)
+//         {
+            
+//                 count+=std::count(S.begin(),S.end(),J[i]);
+            
+//         }
+        return count;
+    }
+};
