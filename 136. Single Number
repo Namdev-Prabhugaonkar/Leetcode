@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_map<int,int> temp_map;
+        int x=0;
+        
+        for(auto i:nums)
+            temp_map[i]++;
+        
+         for(auto i:temp_map)
+           if(i.second==1)
+           {
+               return i.first;
+           }
+    
+            return 0;
+         
+    }
+};
