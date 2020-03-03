@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        unordered_map <int,int> temp_map;
+        
+        for(auto i: nums)
+            temp_map[i]++;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if((temp_map[nums[i]])>=2)
+            {
+                cout<<temp_map[nums[i]];
+                return true;
+            }
+        }
+           
+        
+        return false;
+            
+    }
+};
