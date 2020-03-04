@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        
+       unordered_map<int,int> temp_map;
+        vector<int> ans;
+        for(auto i : nums1)
+            temp_map[i]++;
+            
+        for(int i=0;i<nums2.size();i++)
+        {
+            if(temp_map[nums2[i]]>=1){
+                ans.push_back(nums2[i]);
+               temp_map[nums2[i]]--;
+            }
+        }
+        return ans;
+    }
+};
