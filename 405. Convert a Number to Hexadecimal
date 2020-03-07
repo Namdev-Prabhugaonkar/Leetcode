@@ -1,0 +1,31 @@
+class Solution {
+public:
+    string toHex(int num) {
+        string ans;
+        char hex_value[]={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
+    
+    if(num==0)
+    {
+        return "0";
+    }
+    if(num>0) 
+    {
+    while(num>0){
+        int reminder=num%16;
+        ans=hex_value[reminder]+ans;
+        num/=16;
+
+    }
+    }
+        else{
+            u_int temp_num = num; 
+ 
+        while (temp_num>0) { 
+            int reminder=temp_num%16;
+            ans = hex_value[reminder] + ans; 
+            temp_num /= 16; 
+        } 
+        }
+    return ans;
+    }
+};
