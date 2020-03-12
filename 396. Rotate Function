@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int maxRotateFunction(vector<int>& A) {
+        if(A.size()==0){
+            return 0;
+        }
+        vector<long long int> temp;
+        int size=A.size();
+        int k=0;
+       int negative_infinity1 = -INFINITY;
+        long long int sum=0;
+        
+        for(int i=0;i<size;i++)
+        {
+            int rotate_no=1;
+            while(k<size)
+            {
+                sum+=A[k]*k;
+                k+=1;
+                
+            }
+            
+            k=0;
+         //   temp.push_back(sum);
+            if(sum>negative_infinity1){
+                negative_infinity1=sum;
+                cout<<negative_infinity1<<endl;
+            }
+            rotate(A.begin(),A.begin()+rotate_no,A.end());
+            rotate_no+=1;
+            sum=0;
+
+        }
+    
+//         long long int max=0;
+
+//         sort(temp.begin(),temp.end());
+//         max=temp[size-1];
+        
+        return negative_infinity1;
+    }
+};
