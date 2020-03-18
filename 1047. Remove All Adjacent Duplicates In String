@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string removeDuplicates(string S) {
+        stack<char> ans;
+        string ans_string;
+        for(int i=0;i<S.length();i++){
+            if(ans.empty()){
+                ans.push(S[i]);
+            }
+            else if(ans.top()==S[i]){
+                ans.pop();
+            }
+            else{
+                ans.push(S[i]);
+            }
+        }
+
+        while(!ans.empty()){
+            char c=ans.top();
+            ans_string+=c;
+            ans.pop();
+        }
+       reverse(ans_string.begin(),ans_string.end()); 
+      return ans_string;
+    }
+};
