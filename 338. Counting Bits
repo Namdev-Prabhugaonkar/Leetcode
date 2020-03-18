@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        vector <int> ans;
+        if(num==0){
+                ans.push_back(0);
+            return ans;
+        }
+        
+        else{
+            for(int i=0;i<=num;i++){
+            int count=0;
+            
+            count= __builtin_popcount(i);
+            ans.push_back(count);
+            }           
+        }
+        return ans;
+    }
+};
