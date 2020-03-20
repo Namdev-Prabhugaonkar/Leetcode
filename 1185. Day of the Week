@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string dayOfTheWeek(int day, int month, int year) {
+        string arr[7]={"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
+        
+//         F=k+ [(13*m-1)/5] +D+ [D/4] +[C/4]-2*C
+//         k is  the day of the month.
+// m is the month number.
+// D is the last two digits of the year.
+// C is the first two digits of the year
+        if (month == 1) 
+{ 
+    month = 13; 
+    year--; 
+} 
+if (month == 2) 
+{ 
+    month = 14; 
+    year--; 
+} 
+        int D= year%100;
+        cout<<D<<endl;
+        int C= year/100;
+        cout<<C<<endl;
+        int f=0;
+        f= day + 13*(month+1)/5 + D+ (D/4) +C/4+5*C;
+            f=f%7;
+         cout<<f<<endl;
+
+        return arr[f];
+    }
+};
