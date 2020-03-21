@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int findSpecialInteger(vector<int>& arr) {
+        int percent= arr.size()*(0.25);
+        unordered_map<int,int> temp;
+        
+        for(auto i:arr)
+            temp[i]++;
+        
+        for(auto i:temp)
+           if(i.second>percent){
+               return i.first;
+           }
+        
+        
+        return 0;
+    }
+};
