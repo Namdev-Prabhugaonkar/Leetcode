@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        
+         if(isupper(word[0]) && islower(word[1])){
+            for(int i=2;i<word.length();i++){
+                if(islower(word[i])){
+                    continue;
+                }
+                else{
+                    return 0;
+                }
+        }
+        }
+        
+      else if(isupper(word[0])){
+            for(int i=1;i<word.length();i++){
+                if(isupper(word[i])){
+                    continue;
+                }
+                else{
+                    return 0;
+                }
+            }
+            
+        }
+        else if(islower(word[0])){
+             for(int i=1;i<word.length();i++){
+                if(islower(word[i])){
+                    continue;
+                }
+                else{
+                    return 0;
+                }
+            }
+        }
+        
+        
+        
+        return 1;
+    }
+};
