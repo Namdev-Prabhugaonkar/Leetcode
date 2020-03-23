@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> sumZero(int n) {
+        vector<int> sumZ;
+        
+        while(n!=0){
+    
+                //sumZ.push_back(0);
+                int temp=n/2;
+            if(temp==0){
+            sumZ.push_back(0); 
+            break;
+            }
+            else{
+                                sumZ.push_back(temp);
+                temp=temp*(-1);
+                sumZ.push_back(temp);
+               if(n>0)
+               {
+                   n=n-2;
+                   if(n<0)
+                   {
+                       //sumZ.push_back(0);
+                       break;
+                   }
+               }
+            }
+
+            // else{
+            //     break;
+            // }
+        }
+        
+        return sumZ;
+    }
+};
