@@ -1,0 +1,44 @@
+class Solution {
+public:
+    bool hasAlternatingBits(int n) {
+       int flag=1;
+        
+       if(n&1)
+       {
+           while(n!=0)
+           {
+               if(flag==1 && n&1){
+                   n=n>>1;
+                   flag=0;
+               }
+               else if(flag==0 && (n&1)==0)
+               {
+                   n=n>>1;
+                   flag=1;
+               }
+               else{
+                   return 0;
+               }
+           }
+       }
+        else{
+            while(n!=0)
+           {
+               if(flag==1 && (n&1)==0){
+                   n=n>>1;
+                   flag=0;
+               }
+               else if(flag==0 && (n&1)==1)
+               {
+                   n=n>>1;
+                   flag=1;
+               }
+               else{
+                   return 0;
+               }
+           }
+        }
+        
+        return 1;
+    }
+};
