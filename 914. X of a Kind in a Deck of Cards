@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool hasGroupsSizeX(vector<int>& deck) 
+    {
+        
+        unordered_map<int ,int> temp;
+        for(auto i:deck)
+            temp[i]++;
+        
+         int flag=-1;
+        for(auto i:temp)
+        {   
+            if(i.second > 0)
+            { if(flag == -1)
+                {flag = i.second;
+                }else
+                {   flag= greatest_common_devisor(flag, i.second);
+                }
+              }
+        }
+        
+        return flag >= 2;
+
+    }    
+    
+    int greatest_common_devisor(int x,int y)
+    {
+        if(x==0)
+        {
+            return y;
+        }
+        else
+        {
+          return greatest_common_devisor(y%x,x);
+        }
+    }
+};
