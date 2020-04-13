@@ -1,0 +1,33 @@
+class Solution {
+public:
+   static  int count_bits(int n){
+         int count=0;
+            while(n){
+            
+                if(n&1){
+                    count+=1;
+                }
+                n=n>>1;
+            }
+            return count;
+        }
+    
+   static bool temp(int a, int b){
+       int a_count=count_bits(a);
+       int b_count=count_bits(b);
+        if(a_count < b_count){
+            return 1;
+        }
+        else if((a_count == b_count and a < b)){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(),arr.end(),temp);
+        return arr;
+    }
+};
