@@ -1,0 +1,40 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int getDecimalValue(ListNode* head) {
+        vector<int> vect;
+        int ans=0;
+        ListNode * temp=head;
+        if(head->next==NULL){
+            return temp->val;
+        }
+        
+        while(temp->next!=NULL){
+            int temp_no = temp->val;
+            vect.push_back(temp_no);  
+            temp=temp->next;
+             if(temp->next==NULL){
+                vect.push_back(temp->val);  
+            }
+            temp_no=0;
+        }
+        
+        reverse(vect.begin(),vect.end());
+        
+        for(int i=0;i<vect.size();i++){
+            cout<<vect[i]*pow(2,i)<<endl;
+            int temp=vect[i]*pow(2,i);
+            ans+=temp;
+            temp=0;
+        }
+        
+        return ans;
+    }
+};
