@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int makeEquallength(string &a, string &b){
+        int lenA = a.length();
+        int lenB = b.length();
+        
+        if(lenA<lenB){
+            for(int i=0; i<(lenB-lenA); i++){
+                a = '0' + a;
+            }
+            return lenB;
+        }
+        
+        else if(lenB<lenA){
+            for(int i=0; i<(lenA-lenB); i++){
+                b = '0' + b;
+            }
+        }
+        return lenA;
+    }
+    
+    string addBinary(string a, string b) {
+     string result ="";
+     int carry =0;
+     int length = makeEquallength(a,b);
+     
+     for(int i=(length-1); i>=0;i--){
+         int firstBit= a[i]-'0';
+         int secondBit= b[i]-'0';
+
+         int sum = (firstBit ^ secondBit ^ carry)+'0';
+         result = char(sum) + result;
+         carry = (firstBit & secondBit) | (firstBit & carry) | (secondBit & carry);         
+     }
+      if (carry) 
+        result = '1'+result;
+        
+     return result; 
+    }
+};
