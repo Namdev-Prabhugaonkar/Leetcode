@@ -1,0 +1,55 @@
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        unordered_map <string, int> string_map;
+        string str="";
+        string ans;
+        
+        // for(int i=0;i<banned.size();i++){
+        //     cout<<banned[i]<<endl;
+        // }
+        
+        for(int i=0;i<paragraph.length();i++){
+            if(isalpha(paragraph[i])){
+                str+=tolower(paragraph[i]);
+            }
+            else{
+                str+=' ';
+            }
+        }
+        
+        stringstream ss(str);
+        string temp;
+        
+        while(ss>>temp){
+            string_map[temp]++;
+        }
+        
+          for(auto i:banned)
+          {
+            if(string_map.find(i)!=string_map.end())
+            {
+                string_map.erase(i);
+            }
+          }            
+        
+        for(auto word:banned){
+            if(string_map.find(word)!=string_map.end()){
+                string_map.erase(word);
+            }
+        }
+        
+        int max_count=0;
+        
+        for(auto i: string_map){
+            if(i.second>max_count){
+                   max_count=i.second;
+                ans=i.first;
+            }
+        }
+        
+        
+        return ans;
+         
+    }
+};
