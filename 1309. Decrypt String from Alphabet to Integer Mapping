@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string freqAlphabets(string s) {
+        string ans;
+        string temp;
+        
+        int length = s.length()-1;
+        for(int i=length;i>=0;i--){
+           if(s[i]!='#'){
+               char temp = 96 + s[i] - '0';
+               ans = temp + ans;
+           }
+            else if(s[i]=='#'){
+                char temp = 96 + s[i-1]-'0' + (s[i-2] - '0')*10;
+                printf("%c ",temp);
+                ans=temp+ans;
+                i=i-2;
+            }
+        }
+        
+        return ans;
+    }
+};
