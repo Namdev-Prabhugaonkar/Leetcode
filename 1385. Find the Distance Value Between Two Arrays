@@ -1,0 +1,25 @@
+
+
+int findTheDistanceValue(int* arr1, int arr1Size, int* arr2, int arr2Size, int d){
+    int count = 0;
+        bool flag = true;
+        
+        for(int i=0;i<arr1Size;i++) {
+            flag = true;
+            for(int j=0;j<arr2Size;j++) {
+                if(abs(arr1[i] - arr2[j]) <= d) { 
+                    printf("%d %d, ",arr1[i],arr2[j]);
+                    flag = false; 
+                    break; }
+                printf("out=%d %d, \n",arr1[i],arr2[j]);
+            }
+             
+            if(flag) {
+                count++;
+                printf("count=%d\n",count);
+            }
+        }
+        
+        return count;
+        
+}
