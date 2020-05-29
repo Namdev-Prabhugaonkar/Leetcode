@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int numPairsDivisibleBy60(vector<int>& time) {
+        int arr[60]={0};
+        int count=0;
+        
+        for(int i=0;i<time.size();i++){
+            int temp = time[i]%60;
+            arr[temp]++;
+        }
+        
+        for(int i=0;i<60;i++){
+            if(i==0 || i==30){
+                count+=arr[i] * (arr[i]-1) / 2;
+            }
+            else{
+                count += arr[i] * arr[60 -i];
+                arr[i] = 0;
+            }
+        }
+        
+        return count;
+    }
+};
