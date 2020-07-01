@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int xorOperation(int n, int start) {
+        vector <int> arr;
+        int exor=0;
+        for(int i=0;i<n;i++){
+            int temp = start + (2*i);
+            arr.push_back(temp);
+        }
+        
+        for(int i=0;i<n;i++){
+            exor=exor^arr[i];
+        }
+        return exor;
+    }
+};
