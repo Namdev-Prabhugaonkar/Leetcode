@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<pair<int, int>> vectans;
+    int getKth(int lo, int hi, int k) {
+        for (int i=lo; i<=hi; i++){
+            calculatePower(i);
+        }
+
+        sort(vectans.begin(),vectans.end());
+        
+        return vectans[k-1].second;
+    }
+    
+    void calculatePower(int i){
+          int index=i;
+          int count=0;
+        
+            while(i!=1){
+                if(i%2==0){
+                    i=i/2;
+                    count++;
+                }
+                else{
+                    i=3*i+1;
+                    count++;
+                }
+            }
+        vectans.push_back(make_pair(count, index));     
+    }
+     
+    
+};
