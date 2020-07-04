@@ -1,0 +1,44 @@
+
+
+int search(int* nums, int numsSize, int target){
+    int ans= binarySearch(nums,0,numsSize-1,target);
+    return ans;
+    
+}
+
+int binarySearch(int *nums,int l, int r, int target){
+
+        if(r>=l){
+          
+         int mid = l + (r - l) / 2;
+            
+            if(nums[mid] == target) {
+                return mid;
+            }
+            if(nums[mid] > nums[r]){
+                if(target > nums[mid] || target <= nums[r])
+                { 
+                    l = mid + 1; 
+                    return binarySearch(nums, l, r, target);          
+                      }  
+                else{ r = mid - 1;    
+                      return binarySearch(nums, l, r, target)  ;   
+                    }                                       
+                
+            }
+        
+         else{
+                if(target <= nums[r] && target > nums[mid]){ 
+                    l = mid + 1;  
+                     return binarySearch(nums, l , r, target);                    
+                    }
+                else{ 
+                    r = mid - 1;  
+                    return binarySearch(nums, l , r, target);     
+                    }   
+        }
+    
+        }
+    return -1;
+}
+
