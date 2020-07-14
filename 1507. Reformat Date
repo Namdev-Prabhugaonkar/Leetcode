@@ -1,0 +1,66 @@
+class Solution {
+public:   
+    
+  string Month(string mon){
+        if(mon=="Jan")    return "01";
+        else if(mon=="Feb")   return "02";
+        else if(mon=="Mar")   return "03";
+        else if(mon=="Apr")   return "04";
+        else if(mon=="May")   return "05";
+        else if(mon=="Jun")   return "06";
+        else if(mon=="Jul")   return "07";
+        else if(mon=="Aug")   return "08";
+        else if(mon=="Sep")   return "09";
+        else if(mon=="Oct")   return "10";
+        else if(mon=="Nov")   return "11";
+        else        return "12";
+    }
+    
+    
+    string reformatDate(string date) {
+        string ans;
+        string temp;
+        bool flag=false;
+        int size=date.length()-1;
+        
+        for(int i=size;i>=0;i--){
+            
+            if(date[i]!=' ' || i==0){
+                
+                if(ans.length()>7){
+                    if(date[i]!='s' && date[i]!='t' && date[i]!='r' && date[i]!='d' && date[i]!='h' && date[i]!='n'){
+                        temp = date[i]+temp;
+                    } 
+                }
+                else{
+                    temp = date[i]+temp;
+                }
+                
+                
+            }
+            
+            if(date[i]==' ' || i==0){
+               
+                if(i!=0){
+                if(flag==true){
+                    temp = Month(temp);
+                    temp=temp+'-';
+                }
+                if(flag==false){
+                    temp=temp+'-';
+                    flag= true;     
+                }    
+                }
+                
+                if(temp.size()==1){
+                    temp='0'+temp;
+                }
+                ans = ans+ temp;
+                temp="";    
+            }
+            
+        }
+        
+        return ans;
+    }
+};
