@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numSub(string s) {
+       int count=0;
+       long int temp=0;
+       int mod = 1000000007;
+        
+        for(int i=0;i<s.length();i++){
+            if(s[i]!='0'){
+                temp++;
+            }
+            if(s[i]=='0' || i==s.length()-1){
+               
+                count+= (temp* (temp+1) /2) % mod;
+                temp=0;
+            }
+        }
+
+        return count;
+    }
+};
