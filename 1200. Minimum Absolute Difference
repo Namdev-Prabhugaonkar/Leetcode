@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+         int diff = INT_MAX;
+         vector<vector<int>> ans;
+         vector<int> temp;
+        
+         sort(arr.begin(),arr.end());
+         for(int i=1;i<arr.size();i++){
+             int tempDiff = abs(arr[i-1]-arr[i]);
+                     if(tempDiff<diff){
+                         ans.clear();
+                         diff = tempDiff;
+                         temp = {arr[i-1],arr[i]};
+                         cout<<arr[i-1]<<" "<<arr[i]<<endl;
+                         ans.push_back(temp);
+                         temp.clear();
+                     }
+                     else if(tempDiff==diff){
+                         temp = {arr[i-1],arr[i]};
+                         cout<<arr[i-1]<<" "<<arr[i]<<endl;
+                         ans.push_back(temp);
+                         temp.clear();
+                     }
+         }
+        
+        return ans;
+    }
+};
