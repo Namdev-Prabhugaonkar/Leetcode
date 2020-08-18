@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool threeConsecutiveOdds(vector<int>& arr) {
+        bool flag = false;
+        int count=0;
+        for(int i=0;i<arr.size();i++){
+            if(arr[i]%2==0 && flag==true){
+                flag=false;
+                count=0;
+            }
+            if(arr[i]%2!=0 && flag==false){
+                flag = true;
+            }
+            if(arr[i]%2!=0 && flag==true){
+                count++;
+            }
+            if(count==3){
+                return true;
+            }
+        }
+        
+        return false;
+    }
+};
