@@ -1,0 +1,32 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+    bool usingRecursion(struct ListNode **front,struct ListNode* back) {
+        if(back == NULL){ 
+            return true;
+        }
+        
+        bool isPal=usingRecursion(front, back->next);
+                    
+        if(isPal==false){
+            return false;
+        }
+        
+        bool isPal2 = (back->val == (*front)->val);           
+        *front = (*front)->next;
+                    
+        return isPal2;
+    }
+    
+     bool isPalindrome(struct ListNode* head) {
+        return usingRecursion(&head, head);
+    }
+    
