@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string thousandSeparator(int n) {
+        string ans="";
+        int count=0;
+        string tempstr ="";
+        
+        if(n==0){
+            return "0";
+        }
+        if(n>999){  
+        while(n>0){    
+           if(count==2){
+              char temp = n%10 +'0';
+              tempstr = temp + tempstr; 
+              if(n<=9){
+                  ans = tempstr+ ans; 
+              } 
+              else{
+                  ans ='.'+tempstr+ ans; 
+              } 
+
+              tempstr="";      
+              count=0; 
+           } 
+           else{
+               count++;
+               char temp = n%10 +'0';
+               tempstr = temp + tempstr;
+               cout<<tempstr<<endl;
+           }    
+           n/=10;
+        }
+        
+        ans = tempstr + ans;
+        }
+        
+        else{
+            while(n>0){
+              char temp = n%10 +'0';
+              ans = temp + ans; 
+              n/=10;  
+            }
+        }
+        return ans;
+    }
+};
