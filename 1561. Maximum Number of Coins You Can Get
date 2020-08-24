@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        int count=0;
+        
+        sort(piles.begin(),piles.end());
+        int first=0;
+        int last=piles.size()-1;
+
+     
+        while(first<=last){
+            last-=1;
+            first+=1;
+            count+=piles[last];
+            last-=1;
+        }
+        
+        
+        return count;
+    }
+};
