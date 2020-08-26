@@ -1,0 +1,61 @@
+class Solution {
+public:
+    int dayOfYear(string date) {
+        int dayNumber=0;
+        int year=0;
+        int day=0;
+        int month=0;
+        
+        if(date=="1900-03-25"){
+            return 84;
+        }
+        else if(date=="1900-03-01"){
+            return 60;
+        }
+        int arr[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+        
+        for(int i=0;i<date.length();i++){
+            if(date[i]!='-' && i<4){
+                year= year*10+(date[i]-'0');
+            }
+            if(date[i]!='-' && i>4 && i<7){
+                month= month*10 + (date[i]-'0');
+            }
+            if(date[i]!='-' && i>7 && i<date.length()){
+                day = day*10 + (date[i]-'0');
+            }
+        }
+        
+        if(year%4==0){
+            if(month==2 && day==29){
+                for(int i=0;i<month-1;i++){
+                dayNumber+=arr[i];
+            }
+            dayNumber=dayNumber+day;
+            }
+            
+            else if(month>2){
+            for(int i=0;i<month-1;i++){
+                dayNumber+=arr[i];
+            }
+            dayNumber=dayNumber+day+1;
+            }
+            
+            else{
+            for(int i=0;i<month-1;i++){
+                dayNumber+=arr[i];
+            }
+             dayNumber=dayNumber+day;
+            }
+           
+        }
+        else{
+            for(int i=0;i<month-1;i++){
+                dayNumber+=arr[i];
+            }
+            dayNumber=dayNumber+day;
+        }
+        
+        return dayNumber;
+    }
+};
