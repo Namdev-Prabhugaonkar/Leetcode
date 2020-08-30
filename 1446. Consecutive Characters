@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxPower(string s) {
+        vector<char> power;
+        int count=1;
+        if(s.length()==1){
+            return 1;
+        }
+        
+        for(int i=1;i<s.length();i++){
+          if(s[i]==s[i-1]){
+              count++;
+          }
+            else{
+                power.push_back(count);
+                count=1;
+            }
+        }
+        if(count>1){
+            power.push_back(count);
+        }
+        
+        return *max_element(power.begin(),power.end());
+    }
+};
