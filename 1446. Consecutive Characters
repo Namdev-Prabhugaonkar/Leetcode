@@ -2,6 +2,7 @@ class Solution {
 public:
     int maxPower(string s) {
         vector<char> power;
+        
         int count=1;
         if(s.length()==1){
             return 1;
