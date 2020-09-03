@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& A) {
+        int max = *max_element(A.begin(),A.end());
+        
+        for(int i=0;i<A.size();i++){
+            if(A[i]==max){
+                return i;
+            }
+        }
+        
+        return 0;
+        
+
+    }
+};
