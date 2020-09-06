@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool validMountainArray(vector<int>& A) {
+        bool flag = false;  
+
+        if(A.size()==0){
+            return false;
+        }
+        if(A.size()>2 && A[1]<A[0]){
+            return false;
+        }
+        
+        for(int i=1;i<A.size()-1;i++){
+ 
+            if(A[i+1]<A[i]){
+                flag = true;
+            }
+            else if ((A[i+1]>=A[i]) && flag == true ){
+                return false;
+            }
+        }
+
+        return flag;    
+    }
+};
