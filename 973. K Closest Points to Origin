@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        vector<vector<int>> ans;
+        vector<pair<int,vector<int>>> distance;
+        
+        for(int i=0;i<points.size();i++){
+          int temp = points[i][0]*points[i][0]+points[i][1]*points[i][1];
+          distance.push_back(make_pair(temp,points[i]));  
+        //  cout<<points[i][0]<<" "<<points[i][1]<<" "<<endl;  
+          cout<<points[i].size()<<endl;  
+        }
+        
+        sort(distance.begin(),distance.end(),greater<int>());
+        distance.erase(distance.begin()+K,distance.end());
+        
+        for(int i=0;i<K;i++)
+        {
+            ans.push_back(distance[i].second);
+        }
+        
+        return ans;
+    }
+};
