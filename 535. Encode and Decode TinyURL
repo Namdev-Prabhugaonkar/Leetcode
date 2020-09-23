@@ -1,0 +1,39 @@
+class Solution {
+public:
+    unordered_map<string,string> map;
+    char randomChar(int i){
+        char arr[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        
+        return arr[i];
+    }
+    
+    // Encodes a URL to a shortened URL.
+    string encode(string longUrl) {
+        string encodedString="http://tinyurl.com/";
+        
+        int rand2 = rand()%12;
+
+        while(rand2!=0){
+            int rand1 = rand()%25;
+            encodedString += randomChar(rand1);
+            rand2--;
+        }
+
+        map.insert({encodedString,longUrl});
+       
+        return encodedString;
+    }
+
+    // Decodes a shortened URL to its original URL.
+    string decode(string shortUrl) {
+       if(map.find(shortUrl)!=map.end()){
+           return map[shortUrl];
+       }
+        
+        return " ";
+    }
+};
+
+// Your Solution object will be instantiated and called as such:
+// Solution solution;
+// solution.decode(solution.encode(url));
