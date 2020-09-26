@@ -1,0 +1,45 @@
+class Solution {
+public:
+    string decodeString(string s) {
+        stack<char> letters;
+        string ans;
+        
+        for(int i=0;i<s.length();i++){
+            if(s[i]!=']'){
+                letters.push(s[i]);
+            }
+            else if(s[i]==']'){
+                string tempStr="";
+                while(letters.top()!='['){
+                    tempStr+=letters.top();
+                    letters.pop();
+                }
+                letters.pop();
+                int count=0;
+                int base = 1;
+     
+                while(!letters.empty() && isdigit(letters.top())){
+                  //  count=letters.top()-'0';
+                    count = count + (letters.top() - '0') * base;
+                    base*=10;
+                    letters.pop();
+                }
+                while(count!=0){
+                    for(int j=tempStr.length()-1;j>=0;j--){
+                        letters.push(tempStr[j]);
+                    }
+                    count--;
+                }
+                tempStr="";
+            }
+        }
+        
+        for (int i = letters.size() - 1; i >= 0; i--) {
+            ans = letters.top() + ans;
+            letters.pop();
+        }
+        
+        return ans;
+    }
+};
+
