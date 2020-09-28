@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int countLargestGroup(int n) {
+        unordered_map<int,vector<int>> map;
+        int count=0;
+        
+        while(n>0){
+            int temp=n;
+            int sum=0;
+            while(temp){
+                sum=sum+(temp%10);
+                temp/=10;
+            }
+            
+            map[sum].push_back(n);
+            sum++;
+            n--;
+        }
+        
+        int max=0;
+        for(int i=0;i<map.size();i++){
+            // for(int j=0;j<map[i].size();j++){
+            //     cout<<map[i][j]<<" ";
+            // }
+            // cout<<endl;
+            // cout<<map[i].size()<<" ";
+            if(map[i].size()>max){
+                max=map[i].size();
+                count=1;
+            }
+            else if(map[i].size()==max){
+                count++;
+            }
+        }
+        return count;
+    }
+};
