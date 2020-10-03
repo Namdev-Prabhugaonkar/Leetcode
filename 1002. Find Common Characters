@@ -1,0 +1,44 @@
+class Solution {
+public:
+    vector<string> commonChars(vector<string>& A) {
+      vector<string> ans;
+      unordered_map<char,int> map;
+      string temp=A[0]; 
+        
+      for(auto i: temp){
+          map[i]++;
+      }  
+        
+      for(int i=0;i<A.size();i++){
+              string str = A[i];
+              for(int j=0;j<str.size();j++){
+                  if(map.find(str[j])!=map.end()){
+                      map[str[j]]++;
+                  }
+              }    
+      }  
+      
+       unordered_map<char,int>cur;
+        for(auto & word:A){
+            cur.clear();
+            for(auto ch:word){
+                cur[ch]++;
+            }
+            for(auto& it:map){
+                it.second = min(it.second,cur[it.first]);
+            }
+        }
+        
+      for(auto i:map){
+              while(i.second!=0){
+                  string temp;
+                  temp.push_back(i.first);
+                  ans.push_back(temp);
+                  i.second--;
+              }
+      }  
+        
+        
+       return ans; 
+    }
+};
