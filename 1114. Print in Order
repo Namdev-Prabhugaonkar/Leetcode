@@ -1,0 +1,33 @@
+class Foo {
+public:
+    int mutex=0;
+    Foo() {
+        
+    }
+
+    void first(function<void()> printFirst) {
+        
+        // printFirst() outputs "first". Do not change or remove this line.
+        
+        printFirst();
+        mutex++;
+    }
+
+    void second(function<void()> printSecond) {
+        
+       // printSecond() outputs "second". Do not change or remove this line.
+        while(!mutex){
+        }
+           printSecond();
+         mutex++;
+    }
+
+    void third(function<void()> printThird) {
+        
+        // printThird() outputs "third". Do not change or remove this line.
+        while(mutex<2){
+        }
+             printThird();
+
+    }
+};
