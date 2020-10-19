@@ -1,0 +1,20 @@
+class Solution {
+public:
+    double trimMean(vector<int>& arr) {
+        double mean=0;
+        sort(arr.begin(),arr.end());
+        int first = arr.size()*(0.05);
+        int last = arr.size()-(arr.size()*(0.05));
+        int count=0;
+        
+        for(int i=0;i<arr.size();i++){
+            if(i>=first  && i<last){
+                count++;
+                mean+=arr[i];
+            }
+        }
+        mean=mean/count;
+        
+        return mean;
+    }
+};
