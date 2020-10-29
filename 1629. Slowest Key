@@ -1,0 +1,29 @@
+class Solution {
+public:
+    char slowestKey(vector<int>& releaseTimes, string keysPressed) {
+        int arr[26]={0};
+        int max=0;
+        char pressed=0;
+        
+        for(int i=0;i<keysPressed.length();i++){
+            if(i==0){
+                arr[keysPressed[i]-'a']=releaseTimes[i];
+            }
+            else{
+                int temp = releaseTimes[i]-releaseTimes[i-1];
+                if(arr[keysPressed[i]-'a']<temp){
+                    arr[keysPressed[i]-'a'] = temp;
+                }
+            }
+        }
+        
+        for(int i=25;i>=0;i--){
+            if(arr[i]>max){
+                max=arr[i];
+                pressed=i+'a';
+            }
+        }
+        
+        return pressed;
+    }
+};
